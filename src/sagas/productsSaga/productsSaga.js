@@ -1,13 +1,16 @@
-import { call, takeLatest } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 import { getProducts as getProductsApi } from '../../api';
 import {
   GET_PRODUCTS,
   safeSaga,
+  updateProducts,
 } from '../../actions';
 
 function* getProducts() {
-  const response = yield call(getProductsApi);
-  console.log('getProducts', response);
+  const { data } = yield call(getProductsApi);
+  console.log('getProducts', data);
+
+  yield put(updateProducts(data));
 }
 
 export default function* productsSaga() {

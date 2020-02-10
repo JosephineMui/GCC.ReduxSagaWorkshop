@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import App from "./components/App";
 import "./index.css";
 import configureStore from "./store/configureStore";
-// import { getProducts } from './actions';
+import { getProducts } from './actions';
 
 const store = configureStore();
 
@@ -18,4 +18,4 @@ const render = (store) => {
 }
 
 render(store);
-// store.dispatch(getProducts());
+store.dispatch(getProducts());
