@@ -1,19 +1,21 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import App from "./components/App";
 import "./index.css";
-import configureStore from "./redux/configureStore";
-import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "./store/configureStore";
+import { getProducts } from './actions';
 
 const store = configureStore();
 
-render(
-  <ReduxProvider store={store}>
-    <Router>
+const render = (store) => {
+  ReactDOM.render(
+    <Provider store={store}>
       <App />
-    </Router>
-  </ReduxProvider>,
-  document.getElementById("app")
-);
+    </Provider>,
+    document.getElementById("app")
+  );
+}
+
+render(store);
+store.dispatch(getProducts());
