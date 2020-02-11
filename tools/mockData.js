@@ -11,7 +11,7 @@ const products = [
   },
 ];
 
-const color = [
+const colors = [
   {
     id: 1,
     name: 'White',
