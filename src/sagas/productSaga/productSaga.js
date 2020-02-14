@@ -4,13 +4,19 @@ import {
   GET_PRODUCT,
   safeSaga,
   updateProduct,
+  getProductFinished,
 } from '../../actions';
 
 function* getProduct({ productId }) {
-  const { data } = yield call(getProductById, productId);
-  console.log('getProductById', data);
+  try {
+    const { data } = yield call(getProductById, productId);
 
-  yield put(updateProduct(data));
+    yield put(updateProduct(data));
+  }
+  catch {
+    yield put(updateProduct({}));
+  }
+  yield put(getProductFinished());
 }
 
 export default function* productSaga() {

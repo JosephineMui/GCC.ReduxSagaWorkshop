@@ -3,11 +3,13 @@ const products = [
     id: 100,
     name: 'Andersen 3000 Series Full View Retractable Aluminum Storm Door',
     colorChoices: [1, 2, 3, 4, 5, 6, 7, 8],
+    defaultColorId: 2,
   },
   {
     id: 200,
     name: 'Andersen 2000 Seriees Full View Interchangeable Aluminum Storm Door',
     colorChoices: [1, 2, 3, 6, 7, 8],
+    defaultColorId: 1,
   },
 ];
 

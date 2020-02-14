@@ -1,2 +1,2 @@
-export { getProducts } from './productApi';
 export { getProductById } from './productApi';
+export { getColors } from './colorApi';
