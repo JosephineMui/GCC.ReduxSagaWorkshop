@@ -1,5 +1,6 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { getColors as getColorsApi } from '../../api';
+import { productSelector } from '../../selectors';
 import {
   GET_PRODUCT_FINISHED,
   safeSaga,
@@ -9,7 +10,8 @@ import {
 
 function* getColors() {
   try {
-    const { data } = yield call(getColorsApi);
+    const { colorChoices } = yield select(productSelector);
+    const { data } = yield call(getColorsApi, colorChoices);
 
     yield put(updateColors(data));
   }
