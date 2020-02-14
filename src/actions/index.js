@@ -3,7 +3,9 @@ export { safeSaga } from './sagaActions';
 export {
   GET_PRODUCTS,
   getProducts,
-  UPDATE_PRODUCTS,
-  updateProducts,
+  GET_PRODUCT,
+  getProduct,
+  UPDATE_PRODUCT,
+  updateProduct,
 }
   from "./productActions";

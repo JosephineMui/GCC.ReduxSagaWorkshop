@@ -1,5 +1,5 @@
 
 export default {
-  produdcts: [],
+  produdct: {},
   colors: [],
 };
