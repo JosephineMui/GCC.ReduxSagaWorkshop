@@ -58,7 +58,7 @@ const colors = [
 
 const stores = [
   {
-    storeId: 584,
+    id: 584,
     name: 'Beltway 8 - Houston, TX',
   },
   {

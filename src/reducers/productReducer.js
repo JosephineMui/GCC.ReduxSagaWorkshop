@@ -3,10 +3,10 @@ import {
   UPDATE_PRODUCT,
 } from '../actions';
 
-export const product = createReducer({}, {
+export const productReducer = createReducer({}, {
   [UPDATE_PRODUCT](state, { product }) {
     return product;
   },
 });
 
-export default product;
+export default productReducer;

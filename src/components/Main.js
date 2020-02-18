@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProduct } from '../actions';
+import { getProduct, getStores } from '../actions';
 
 
-const Main = ({ productId, getProduct }) => {
+const Main = ({ productId, getProduct, getStoreLocations }) => {
 
   useEffect(() => {
     getProduct(productId);
   }, [productId]);
+
+  useEffect(() => {
+    getStoreLocations();
+  }, []);
 
   return (
     <div>
@@ -22,6 +26,7 @@ const Main = ({ productId, getProduct }) => {
 Main.propTypes = {
   productId: PropTypes.number.isRequired,
   getProduct: PropTypes.func,
+  getStoreLocations: PropTypes.func,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -34,6 +39,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getProduct: productId => dispatch(getProduct(productId)),
+  getStoreLocations: () => dispatch(getStores()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

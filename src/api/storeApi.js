@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseUrl = process.env.API_URL + "/products";
+const baseUrl = process.env.API_URL + "/stores";
 
-export function getProducts() {
+export function getStores() {
 
   return axios.get(baseUrl);
 }

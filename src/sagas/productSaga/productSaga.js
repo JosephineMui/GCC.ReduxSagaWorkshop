@@ -1,13 +1,12 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, take, put } from 'redux-saga/effects';
 import { getProductById } from '../../api';
 import {
   GET_PRODUCT,
-  safeSaga,
   updateProduct,
   getProductFinished,
 } from '../../actions';
 
-function* getProduct({ productId }) {
+function* getProduct(productId) {
   try {
     const { data } = yield call(getProductById, productId);
 
@@ -21,6 +20,7 @@ function* getProduct({ productId }) {
 
 export default function* productSaga() {
   console.log("productSaga starterd");
-  // TODO: Should use Take (Josephine) **********
-  yield takeLatest(GET_PRODUCT, safeSaga(getProduct));
+
+  const { productId } = yield take(GET_PRODUCT);
+  yield call(getProduct, productId);
 }
