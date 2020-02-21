@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProduct, getStores } from '../actions';
+import StoreLocation from './StoreLocation';
+import ColorSwatchList from './ColorSwatchList';
 
 
 const Main = ({ productId, getProduct, getStoreLocations }) => {
@@ -19,6 +21,10 @@ const Main = ({ productId, getProduct, getStoreLocations }) => {
       <h1>Customize Your Storm Doors</h1>
 
       <h3>Product Id: {productId}</h3>
+      <StoreLocation />
+      <div>
+        <ColorSwatchList />
+      </div>
     </div>
   );
 };

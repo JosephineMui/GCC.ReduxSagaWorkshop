@@ -5,10 +5,7 @@ import {
 
 export const storesReducer = createReducer([], {
   [UPDATE_STORES](state, { stores }) {
-    return stores.reduce((dict, store) => {
-      dict[store.id] = store;
-      return dict;
-    }, {});
+    return stores;
   },
 });
 

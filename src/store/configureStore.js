@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 
 import defaultState from './getDefaultState';
 import { rootReducer } from '../reducers';
@@ -15,9 +15,9 @@ const onError = error => console.log('Uncaught Global Saga Error:', error);
 
 const sagaMiddleware = createSagaMiddleware({ onError });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
-const logger = createLogger();
+// const logger = createLogger();
 
-const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware, thunk, logger));
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware, thunk));
 
 const configureStore = (initialState = defaultState) => {
   const store = createStore(
