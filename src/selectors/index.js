@@ -1,3 +1,8 @@
+export { productColorsSelector } from './productColorsSelector';
+
+
+export { colorsSelector } from './colors/colorsSelector';
+
 // product
 export { productSelector } from './product/productSelector';
 

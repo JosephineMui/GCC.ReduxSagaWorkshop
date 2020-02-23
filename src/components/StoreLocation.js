@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ThdSelect from '@gcc/pip-components/dist/ThdSelect';
+// import ThdSelect from '@gcc/pip-components/dist/ThdSelect';
 import ChoiceSectionHeader from '@gcc/pip-components/dist/ChoiceSectionHeader';
 // import { storesSelector, selectedStoreSelector } from '../selectors';
 

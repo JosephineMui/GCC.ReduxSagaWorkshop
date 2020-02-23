@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ColorSwatch = () => {
+const ColorSwatch = ({ color: { id, name, imageUrl }, isSelected }) => {
 
   const SwatchSelected = () => {
     alert('Selected');
   };
-  const isSelected = false;
-  const choiceId = 1;
+
   const price = 123.32
 
   return (
     <ColorSwatchLabel
-      id={1}
+      id={id}
       className={
         isSelected ? 'selected-swatch facet-swatch-label' : 'facet-swatch-label'
       }
@@ -20,8 +19,8 @@ const ColorSwatch = () => {
     >
       <ColorSwatchCheckbox
         type="radio"
-        id={`CompositeFacetedColorSwatch-${choiceId}`}
-        value={choiceId}
+        id={`CompositeFacetedColorSwatch-${id}`}
+        value={id}
         checked={isSelected}
         name="CompositeFacetedColorSwatches"
         onChange={() => {
@@ -30,14 +29,14 @@ const ColorSwatch = () => {
       />
       <SwatchImageContainer>
         <img
-          src={'https://qa-blinds.hd-qa71.homedepotdev.com/product-images/8d5ceb6b-aa70-e811-946d-0a986990730e.jpg'}
-          alt={'color abc'}
+          src={imageUrl}
+          alt={name}
         />
       </SwatchImageContainer>
 
       <SwatchContentContainer>
         <SwatchTitle>
-          <b>brand</b> more info here
+          <b>{name}</b>
         </SwatchTitle>
         <h4>{price}</h4>
       </SwatchContentContainer>

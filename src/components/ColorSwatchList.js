@@ -1,92 +1,44 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ColorSwatch from './ColorSwatch';
+import { productColorsSelector, selectedColorSelector } from '../selectors';
+import * as Styled from './ColorSwatchList.styled';
 
-class ColorSwatchList extends Component {
+const ColorSwatchList = ({ colors, selectedColorId }) => {
 
-  render() {
-    const choiceIds = [1, 2, 3, 4, 5, 6, 7, 8];
-
-    return (
-      <CompositeFacetedColorListContainer
-        id="CompositeSwatchesList"
-        swatchRowHeigh={'300px'}
-        ref={CompositeSwatchesList =>
-          (this.CompositeSwatchesList = CompositeSwatchesList)
-        }
-      >
-        <CompositeSwatchesList>
-          {choiceIds.map(id => (
-            <CompositeSwatchesListItem key={id}>
-              <ColorSwatch />
-            </CompositeSwatchesListItem>
-          ))}
-        </CompositeSwatchesList>
-      </CompositeFacetedColorListContainer>
-    );
-  }
+  return (
+    <Styled.ColorListContainer
+      id="SwatchList"
+      swatchRowHeigh={'200px'}
+    >
+      <Styled.SwatchList>
+        {colors.map(color => (
+          <Styled.SwatchListItem key={color.id}>
+            <ColorSwatch
+              color={color}
+              isSelected={color.id === selectedColorId}
+            />
+          </Styled.SwatchListItem>
+        ))}
+      </Styled.SwatchList>
+    </Styled.ColorListContainer>
+  );
 }
 
-const CompositeFacetedColorListContainer = styled.div`
-  position: relative;
+ColorSwatchList.propTypes = {
+  colors: PropTypes.array.isRequired,
+  selectedColorId: PropTypes.number.isRequired,
+}
 
-  &.hide-all-swatches {
-    overflow: hidden;
-    height: ${props => props.swatchRowHeigh};
+const mapStateToProps = (state) => {
+  const colors = productColorsSelector(state);
+  const selectedColorId = selectedColorSelector(state);
 
-    @media (min-width: 768px) {
-      height: ${props => props.swatchRowHeigh};
-    }
-  }
-`;
+  return {
+    colors,
+    selectedColorId,
+  };
+}
 
-const CompositeSwatchesList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-
-  @supports (display: grid) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 11px;
-  }
-
-  @media (min-width: 768px) {
-    @supports (display: grid) {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    @supports (display: grid) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  @media (min-width: 1440px) {
-    @supports (display: grid) {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-`;
-
-const CompositeSwatchesListItem = styled.li`
-  flex: 0 1 25%;
-  margin: 0 10px 10px;
-  @supports (display: grid) {
-    margin: 0;
-  }
-
-  @media (min-width: 1024px) {
-    flex: 0 1 21%;
-  }
-  @media (min-width: 1440px) {
-    flex: 0 1 15%;
-  }
-`;
-
-export default ColorSwatchList;
+export default connect(mapStateToProps)(ColorSwatchList);
