@@ -19,6 +19,8 @@ export {
   getColorsFinished,
   COLOR_SELECTED,
   colorSelected,
+  UPDATE_COLOR_PRICE,
+  updateColorPrice,
 }
   from "./colorActions";
 

@@ -16,15 +16,16 @@ function* getColors() {
     const { data } = yield call(getColorsApi, colorChoices);
 
     yield put(updateColors(data));
+
+    yield all([
+      put(colorSelected(defaultColorId)),
+      put(getColorsFinished())
+    ]);
   }
   catch (exception) {
     yield put(updateColors([]));
     console.log('getColors failed', exception);
   }
-  yield all([
-    put(colorSelected(defaultColorId)),
-    put(getColorsFinished())
-  ]);
 }
 
 export default function* colorSaga() {

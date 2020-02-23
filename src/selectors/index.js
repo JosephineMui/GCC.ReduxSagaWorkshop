@@ -2,6 +2,7 @@ export { productColorsSelector } from './productColorsSelector';
 
 
 export { colorsSelector } from './colors/colorsSelector';
+export { colorByIdSelector } from './colors/colorByIdSelector';
 
 // product
 export { productSelector } from './product/productSelector';

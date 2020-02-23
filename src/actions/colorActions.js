@@ -11,3 +11,7 @@ export const getColorsFinished = createAction(GET_COLORS_FINISHED);
 
 export const COLOR_SELECTED = 'COLOR_SELECTED';
 export const colorSelected = createAction(COLOR_SELECTED, 'colorId');
+
+export const UPDATE_COLOR_PRICE = 'UPDATE_COLOR_PRICE';
+export const updateColorPrice = createAction(UPDATE_COLOR_PRICE, 'colorId', 'price');
+

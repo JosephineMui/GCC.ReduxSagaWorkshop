@@ -31,6 +31,11 @@ ColorSwatchList.propTypes = {
   selectedColorId: PropTypes.number.isRequired,
 }
 
+ColorSwatchList.defaultProps = {
+  colors: [],
+  selectedColorId: 0,
+}
+
 const mapStateToProps = (state) => {
   const colors = productColorsSelector(state);
   const selectedColorId = selectedColorSelector(state);

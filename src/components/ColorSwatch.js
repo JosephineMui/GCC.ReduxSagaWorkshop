@@ -1,139 +1,75 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as Styled from './ColorSwatch.styled';
+import { colorByIdSelector } from '../selectors';
 
-const ColorSwatch = ({ color: { id, name, imageUrl }, isSelected }) => {
+const ColorSwatch = ({ id, name, imageUrl, isSelected, price }) => {
 
   const SwatchSelected = () => {
     alert('Selected');
   };
 
-  const price = 123.32
-
   return (
-    <ColorSwatchLabel
+    <Styled.ColorSwatchLabel
       id={id}
       className={
         isSelected ? 'selected-swatch facet-swatch-label' : 'facet-swatch-label'
       }
       border={isSelected}
     >
-      <ColorSwatchCheckbox
+      <Styled.ColorSwatchCheckbox
         type="radio"
-        id={`CompositeFacetedColorSwatch-${id}`}
+        id={`ColorSwatch-${id}`}
         value={id}
         checked={isSelected}
-        name="CompositeFacetedColorSwatches"
+        name="ColorSwatch"
         onChange={() => {
           SwatchSelected();
         }}
       />
-      <SwatchImageContainer>
+      <Styled.SwatchImageContainer>
         <img
           src={imageUrl}
           alt={name}
         />
-      </SwatchImageContainer>
+      </Styled.SwatchImageContainer>
 
-      <SwatchContentContainer>
-        <SwatchTitle>
+      <Styled.SwatchContentContainer>
+        <Styled.SwatchTitle>
           <b>{name}</b>
-        </SwatchTitle>
+        </Styled.SwatchTitle>
         <h4>{price}</h4>
-      </SwatchContentContainer>
-    </ColorSwatchLabel>
+      </Styled.SwatchContentContainer>
+    </Styled.ColorSwatchLabel>
   );
 };
 
-const ColorSwatchLabel = styled.label`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  position: relative;
-  height: 100%;
-  align-content: flex-start;
+ColorSwatch.propTypes = {
+  price: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  isSelected: PropTypes.bool,
+}
 
-  &:before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: ${props =>
-    (props.border ? '3px solid #f96302' : '1px solid #cccccc')};
-    box-sizing: border-box;
-  }
-`;
+ColorSwatch.defaultProps = {
+  price: 'N/A',
+  imageUrl: '',
+  isSelected: false,
+}
 
-const ColorSwatchCheckbox = styled.input`
-  height: 0;
-`;
+const mapStateToProps = (state, ownProps) => {
+  const { color: { id, name, imageUrl }, isSelected } = ownProps;
+  const { price } = colorByIdSelector(id)(state);
 
-const SwatchImageContainer = styled.div`
-  flex: 1 100%;
-  display: block;
-  width: 100%;
-  max-height: 104px;
-  min-height: 104px;
-  overflow: hidden;
+  return {
+    price,
+    id,
+    name,
+    imageUrl,
+    isSelected,
+  };
+}
 
-  img {
-    width: 100%;
-    height: auto;
-    display: inline-block;
-  }
-`;
-
-const SwatchContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1 100%;
-  flex-wrap: wrap;
-  padding: 4px 7px 7px;
-  color: #333;
-  .WoodChoicePrice {
-    display: flex;
-    align-items: center;
-  }
-
-  .WoodChoicePriceDollars {
-    font-size: 14px;
-  }
-
-  .PriceContainer {
-    display: flex;
-    align-items: center;
-  }
-
-  .PriceDisplayLifted {
-    font-size: 10px;
-    padding-bottom: 3px;
-  }
-
-  .WoodChoicePrice-cents {
-    font-size: 10px;
-    padding-bottom: 3px;
-  }
-
-  .WoodChoicePriceDivider {
-    margin: 0 2px;
-  }
-
-  .WoodChoicePriceDivider,
-  .WoodChoicePrice-units {
-    font-size: 12px;
-    padding-top: 2px;
-  }
-`;
-
-const SwatchTitle = styled.h3`
-  flex: 1 100%;
-  font-size: 12px;
-  padding-bottom: 6px;
-
-  b {
-    font-weight: bold;
-  }
-`;
-
-export default ColorSwatch;
+export default connect(mapStateToProps)(ColorSwatch);

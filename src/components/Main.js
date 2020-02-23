@@ -36,7 +36,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const productId = ownProps.match.params.id || 200;
+  const productId = ownProps.match.params.id || 100;
 
   return {
     productId,
