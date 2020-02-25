@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as Styled from './ColorSwatch.styled';
 import { colorByIdSelector } from '../selectors';
+import { colorSelected } from '../actions';
 
-const ColorSwatch = ({ id, name, imageUrl, isSelected, price }) => {
-
-  const SwatchSelected = () => {
-    alert('Selected');
-  };
+const ColorSwatch = ({ id, name, imageUrl, isSelected, price, colorSelected }) => {
 
   return (
     <Styled.ColorSwatchLabel
@@ -24,9 +21,7 @@ const ColorSwatch = ({ id, name, imageUrl, isSelected, price }) => {
         value={id}
         checked={isSelected}
         name="ColorSwatch"
-        onChange={() => {
-          SwatchSelected();
-        }}
+        onChange={() => colorSelected(id)}
       />
       <Styled.SwatchImageContainer>
         <img
@@ -51,6 +46,7 @@ ColorSwatch.propTypes = {
   name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string,
   isSelected: PropTypes.bool,
+  colorSelected: PropTypes.func.isRequired,
 }
 
 ColorSwatch.defaultProps = {
@@ -72,4 +68,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-export default connect(mapStateToProps)(ColorSwatch);
+const mapDispatchToProps = dispatch => ({
+  colorSelected: colorId => dispatch(colorSelected(colorId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ColorSwatch);

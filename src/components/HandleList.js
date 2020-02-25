@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChoiceBoxSelect from '@gcc/pip-components/dist/ChoiceBoxSelect';
 import { handlesSelector, selectedHandleSelector } from '../selectors';
+import { handleSelected } from '../actions';
 
-const HandleList = ({ handles, selectedHandle }) => {
-
-  const ChoiceSelected = () => {
-    alert('Selected');
-  };
+const HandleList = ({ handles, selectedHandle, handleSelected }) => {
 
   return (
     <React.Fragment>
@@ -19,7 +16,7 @@ const HandleList = ({ handles, selectedHandle }) => {
         keyBy={handle => handle.id}
         labelBy={handle => handle.name}
         imageBy={handle => handle.imageUrl}
-        onChange={ChoiceSelected}
+        onChange={handleSelected}
       />
     </React.Fragment>
   );
@@ -28,13 +25,14 @@ const HandleList = ({ handles, selectedHandle }) => {
 HandleList.propTypes = {
   handles: PropTypes.array.isRequired,
   selectedHandle: PropTypes.object,
+  handleSelected: PropTypes.func.isRequired,
 }
 
 HandleList.defaultProps = {
   selectedHandle: null,
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const handles = handlesSelector(state);
   const selectedHandleId = selectedHandleSelector(state);
   const selectedHandle = handles[selectedHandleId] || null;
@@ -43,6 +41,10 @@ const mapStateToProps = (state) => {
     handles: Object.values(handles) || [],
     selectedHandle,
   };
-}
+};
 
-export default connect(mapStateToProps)(HandleList);
+const mapDispatchToProps = dispatch => ({
+  handleSelected: handle => dispatch(handleSelected(handle.id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HandleList);
