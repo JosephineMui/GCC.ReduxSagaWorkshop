@@ -2,6 +2,7 @@ import { createReducer } from '../utils';
 import {
   COLOR_SELECTED,
   STORE_SELECTED,
+  HANDLE_SELECTED,
 } from '../actions';
 
 export const selectedChoicesReducer = createReducer({}, {
@@ -10,6 +11,9 @@ export const selectedChoicesReducer = createReducer({}, {
   },
   [STORE_SELECTED](state, { storeId }) {
     return { ...state, storeId };
+  },
+  [HANDLE_SELECTED](state, { handleId }) {
+    return { ...state, handleId };
   },
 });
 

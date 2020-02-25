@@ -12,6 +12,7 @@ const ColorSwatchList = ({ colors, selectedColorId }) => {
       id="SwatchList"
       swatchRowHeigh={'200px'}
     >
+      <h3>Select Color</h3>
       <Styled.SwatchList>
         {colors.map(color => (
           <Styled.SwatchListItem key={color.id}>

@@ -2,13 +2,13 @@ const products = [
   {
     id: 100,
     name: 'Andersen 3000 Series Full View Retractable Aluminum Storm Door',
-    colorChoices: [1, 2, 3, 4, 5, 6, 7, 8],
-    defaultColorId: 2,
+    colorChoices: [4, 5, 6, 7, 8],
+    defaultColorId: 4,
   },
   {
     id: 200,
     name: 'Andersen 2000 Seriees Full View Interchangeable Aluminum Storm Door',
-    colorChoices: [1, 2, 3, 6, 7, 8],
+    colorChoices: [1, 3, 6, 7, 8],
     defaultColorId: 1,
   },
 ];
@@ -56,6 +56,19 @@ const colors = [
   },
 ];
 
+const handles = [
+  {
+    id: 100,
+    name: 'Traditional Nickel',
+    imageUrl: 'https://blinds.homedepot.com/SqlImages/fc7b8f90-f894-e811-9470-0a986990730e.png',
+  },
+  {
+    id: 200,
+    name: 'Traditional Brass',
+    imageUrl: 'https://blinds.homedepot.com/SqlImages/fde364ad-f894-e811-9470-0a986990730e.png',
+  },
+];
+
 const stores = [
   {
     id: 584,
@@ -69,155 +82,131 @@ const stores = [
 
 const prices = [
   {
-    storeId: 584,
-    colorId: 1,
+    sku: '204281265_202985059',
     price: 101.99,
   },
   {
-    storeId: 584,
-    colorId: 2,
+    sku: '90726-H03-G01',
     price: 160.95,
   },
   {
-    storeId: 584,
-    colorId: 3,
+    sku: '90734-H03-G01',
     price: 200.00,
   },
   {
-    storeId: 584,
-    colorId: 4,
+    sku: '90766-H03-G01',
     price: 199.95,
   },
   {
-    storeId: 584,
-    colorId: 5,
+    sku: '90758-H03-G01',
     price: 250.00,
   },
   {
-    storeId: 584,
-    colorId: 6,
+    sku: '90742-H03-G01',
     price: 290.99,
   },
   {
-    storeId: 584,
-    colorId: 7,
+    sku: '90774-H03-G01',
     price: 300.00,
   },
   {
-    storeId: 584,
-    colorId: 8,
+    sku: '90750-H03-G01',
     price: 280.88,
   },
   {
-    storeId: 6860,
-    colorId: 1,
+    sku: '21484',
     price: 151.99,
   },
   {
-    storeId: 6860,
-    colorId: 2,
+    sku: '21485',
     price: 190.95,
   },
   {
-    storeId: 6860,
-    colorId: 3,
+    sku: '21486',
     price: 230.00,
   },
   {
-    storeId: 6860,
-    colorId: 4,
+    sku: '21487',
     price: 110.99,
   },
   {
-    storeId: 6860,
-    colorId: 5,
+    sku: '21232',
     price: 310.00,
   },
   {
-    storeId: 6860,
-    colorId: 6,
+    sku: '20314',
     price: 250.95,
-  },
-  {
-    storeId: 6860,
-    colorId: 7,
-    price: 290.90,
-  },
-  {
-    storeId: 6860,
-    colorId: 8,
-    price: 295.80,
   },
 ];
 
 const skus = [
   {
-    productId: 100,
+    handleId: 100,
     colorId: 1,
     sku: '204281265_202985059',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 2,
     sku: '90726-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 3,
     sku: '90734-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 4,
     sku: '90766-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 5,
     sku: '90758-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 6,
     sku: '90742-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 7,
     sku: '90774-H03-G01',
   },
   {
-    productId: 100,
+    handleId: 100,
     colorId: 8,
     sku: '90750-H03-G01',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 1,
     sku: '21484',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 2,
     sku: '21485',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 3,
     sku: '21486',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 6,
     sku: '21487',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 7,
     sku: '21232',
   },
   {
-    productId: 200,
+    handleId: 200,
     colorId: 8,
     sku: '20314',
   },
@@ -228,6 +217,7 @@ const skus = [
 module.exports = {
   products,
   colors,
+  handles,
   stores,
   prices,
   skus,

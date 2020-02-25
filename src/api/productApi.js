@@ -9,6 +9,6 @@ export function getProducts() {
 
 export function getProductById(id) {
 
-  return axios.get(`${baseUrl}/${id}`);
+  return axios.get(`${baseUrl}/${id}`).then(response => response.data);
 }
 

@@ -35,3 +35,13 @@ export {
   storeSelected,
 }
   from "./storeActions";
+
+export {
+  GET_HANDLES,
+  getHandles,
+  UPDATE_HANDLES,
+  updateHandles,
+  HANDLE_SELECTED,
+  handleSelected,
+}
+  from "./handleActions";

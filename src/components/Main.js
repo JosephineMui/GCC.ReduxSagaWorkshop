@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProduct, getStores } from '../actions';
-import StoreLocation from './StoreLocation';
+import { getProduct, getHandles } from '../actions';
 import ColorSwatchList from './ColorSwatchList';
+import HandleList from './HandleList';
 
-
-const Main = ({ productId, getProduct, getStoreLocations }) => {
+const Main = ({ productId, getProduct, getHandleChoices }) => {
 
   useEffect(() => {
     getProduct(productId);
   }, [productId]);
 
   useEffect(() => {
-    getStoreLocations();
+    getHandleChoices();
   }, []);
 
   return (
@@ -21,9 +20,11 @@ const Main = ({ productId, getProduct, getStoreLocations }) => {
       <h1>Customize Your Storm Doors</h1>
 
       <h3>Product Id: {productId}</h3>
-      <StoreLocation />
       <div>
         <ColorSwatchList />
+      </div>
+      <div>
+        <HandleList />
       </div>
     </div>
   );
@@ -32,7 +33,7 @@ const Main = ({ productId, getProduct, getStoreLocations }) => {
 Main.propTypes = {
   productId: PropTypes.number.isRequired,
   getProduct: PropTypes.func,
-  getStoreLocations: PropTypes.func,
+  getHandleChoices: PropTypes.func,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getProduct: productId => dispatch(getProduct(productId)),
-  getStoreLocations: () => dispatch(getStores()),
+  getHandleChoices: () => dispatch(getHandles()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

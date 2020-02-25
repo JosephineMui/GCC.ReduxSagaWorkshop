@@ -6,6 +6,6 @@ export function getColors(colorIds) {
 
   const params = colorIds.join('&id=');
   const url = `${baseUrl}?id=${params}`;
-  return axios.get(url);
+  return axios.get(url).then(response => response.data);
 }
 

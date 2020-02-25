@@ -5,27 +5,26 @@ import {
   GET_PRODUCT_FINISHED,
   safeSaga,
   updateColors,
-  getColorsFinished,
   colorSelected,
 } from '../../actions';
 
 function* getColors() {
   const { colorChoices, defaultColorId } = yield select(productSelector);
+  let colors = [];
+  let selectedColorId = null;
 
   try {
-    const { data } = yield call(getColorsApi, colorChoices);
-
-    yield put(updateColors(data));
-
-    yield all([
-      put(colorSelected(defaultColorId)),
-      put(getColorsFinished())
-    ]);
+    colors = yield call(getColorsApi, colorChoices);
+    selectedColorId = defaultColorId;
   }
   catch (exception) {
-    yield put(updateColors([]));
     console.log('getColors failed', exception);
   }
+
+  yield all([
+    put(updateColors(colors)),
+    put(colorSelected(selectedColorId)),
+  ]);
 }
 
 export default function* colorSaga() {

@@ -7,14 +7,15 @@ import {
 } from '../../actions';
 
 function* getProduct(productId) {
-  try {
-    const { data } = yield call(getProductById, productId);
+  let product = {};
 
-    yield put(updateProduct(data));
+  try {
+    product = yield call(getProductById, productId);
   }
-  catch {
-    yield put(updateProduct({}));
+  catch (exception) {
+    console.log('getProduct failed', exception);
   }
+  yield put(updateProduct(product));
   yield put(getProductFinished());
 }
 
