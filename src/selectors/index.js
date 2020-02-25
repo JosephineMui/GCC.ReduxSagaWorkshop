@@ -4,6 +4,9 @@ export { productColorsSelector } from './productColorsSelector';
 export { colorsSelector } from './colors/colorsSelector';
 export { colorByIdSelector } from './colors/colorByIdSelector';
 
+// grades
+export { gradesSelector } from './grades/gradesSelector';
+
 // handles
 export { handlesSelector } from './handles/handlesSelector';
 
@@ -12,7 +15,7 @@ export { productSelector } from './product/productSelector';
 
 // selectedChoices
 export { selectedColorSelector } from './selectedChoices/selectedColorSelector';
-export { selectedStoreSelector } from './selectedChoices/selectedStoreSelector';
+export { selectedGradeSelector } from './selectedChoices/selectedGradeSelector';
 export { selectedHandleSelector } from './selectedChoices/selectedHandleSelector';
 
 // stores

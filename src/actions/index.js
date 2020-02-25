@@ -25,18 +25,6 @@ export {
   from "./colorActions";
 
 export {
-  GET_STORES,
-  getStores,
-  UPDATE_STORES,
-  updateStores,
-  GET_STORES_FINISHED,
-  getStoresFinished,
-  STORE_SELECTED,
-  storeSelected,
-}
-  from "./storeActions";
-
-export {
   GET_HANDLES,
   getHandles,
   UPDATE_HANDLES,
@@ -45,3 +33,13 @@ export {
   handleSelected,
 }
   from "./handleActions";
+
+export {
+  GET_GRADES,
+  getGrades,
+  UPDATE_GRADES,
+  updateGrades,
+  GRADE_SELECTED,
+  gradeSelected,
+}
+  from "./gradeActions";

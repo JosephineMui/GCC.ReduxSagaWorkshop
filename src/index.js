@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import App from "./components/App";
 import "./index.css";
 import configureStore from "./store/configureStore";
+import { getGrades, getHandles } from './actions';
 
 const store = configureStore();
 
@@ -19,4 +20,8 @@ const render = (store) => {
   );
 }
 
+store.dispatch(getGrades());
+store.dispatch(getHandles());
+
 render(store);
+

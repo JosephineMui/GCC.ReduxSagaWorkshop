@@ -56,6 +56,19 @@ const colors = [
   },
 ];
 
+const grades = [
+  {
+    id: 'S',
+    name: 'Standard',
+    sequence: 1,
+  },
+  {
+    id: 'P',
+    name: 'Premium',
+    sequence: 2,
+  },
+];
+
 const handles = [
   {
     id: 100,
@@ -66,17 +79,6 @@ const handles = [
     id: 200,
     name: 'Traditional Brass',
     imageUrl: 'https://blinds.homedepot.com/SqlImages/fde364ad-f894-e811-9470-0a986990730e.png',
-  },
-];
-
-const stores = [
-  {
-    id: 584,
-    name: 'Beltway 8 - Houston, TX',
-  },
-  {
-    id: 6860,
-    name: 'Kingsbridge - Sugar Land, TX',
   },
 ];
 
@@ -141,72 +143,72 @@ const prices = [
 
 const skus = [
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 1,
     sku: '204281265_202985059',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 2,
     sku: '90726-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 3,
     sku: '90734-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 4,
     sku: '90766-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 5,
     sku: '90758-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 6,
     sku: '90742-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 7,
     sku: '90774-H03-G01',
   },
   {
-    handleId: 100,
+    gradeId: 'S',
     colorId: 8,
     sku: '90750-H03-G01',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 1,
     sku: '21484',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 2,
     sku: '21485',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 3,
     sku: '21486',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 6,
     sku: '21487',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 7,
     sku: '21232',
   },
   {
-    handleId: 200,
+    gradeId: 'P',
     colorId: 8,
     sku: '20314',
   },
@@ -218,7 +220,7 @@ module.exports = {
   products,
   colors,
   handles,
-  stores,
   prices,
   skus,
+  grades,
 };

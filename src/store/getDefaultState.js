@@ -1,5 +1,7 @@
 
 export default {
   product: {},
-  colors: [],
+  colors: {},
+  handles: {},
+  grades: {},
 };
