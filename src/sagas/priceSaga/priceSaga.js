@@ -1,17 +1,19 @@
 import { call, takeLatest, select, all, spawn, put } from 'redux-saga/effects';
+import isEmpty from 'lodash/isEmpty';
 import { getPrice } from '../../api';
-import { colorsSelector, selectedStoreSelector } from '../../selectors';
+import { colorsSelector, selectedGradeSelector } from '../../selectors';
 import {
-  GET_COLORS_FINISHED,
+  GRADE_SELECTION_CHANGED,
+  UPDATE_COLORS_FINISHED,
   updateColorPrice,
   safeSaga,
 } from '../../actions';
 
 const formatPrice = colorPrice => (colorPrice && colorPrice.price !== 0 ? `$${colorPrice.price.toFixed(2)}` : 'N/A');
 
-function* getColorPrice(storeId, colorId) {
+function* getColorPrice(gradeId, colorId) {
   try {
-    const colorPrice = yield call(getPrice, storeId, colorId);
+    const colorPrice = yield call(getPrice, gradeId, colorId);
 
     const price = formatPrice(colorPrice);
     yield put(updateColorPrice(colorId, price))
@@ -23,13 +25,15 @@ function* getColorPrice(storeId, colorId) {
 
 function* getColorPrices() {
 
-  const selectedStoreId = yield select(selectedStoreSelector);
+  const selectedGradeId = yield select(selectedGradeSelector);
   const colors = yield select(colorsSelector);
 
-  yield all(Object.keys(colors).map(colorId => spawn(getColorPrice, selectedStoreId, colorId)));
+  if (selectedGradeId && !isEmpty(colors))
+    yield all(Object.keys(colors).map(colorId => spawn(getColorPrice, selectedGradeId, colorId)));
 }
 
 export default function* priceSaga() {
   console.log("priceSaga starterd");
-  yield takeLatest(GET_COLORS_FINISHED, safeSaga(getColorPrices));
+  // TODO: Josephine what if I passed data through action
+  yield takeLatest([GRADE_SELECTION_CHANGED, UPDATE_COLORS_FINISHED], safeSaga(getColorPrices));
 }

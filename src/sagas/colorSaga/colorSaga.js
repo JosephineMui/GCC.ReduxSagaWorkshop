@@ -6,6 +6,7 @@ import {
   safeSaga,
   updateColors,
   colorSelected,
+  updateColorsFinished,
 } from '../../actions';
 
 function* getColors() {
@@ -21,8 +22,10 @@ function* getColors() {
     console.log('getColors failed', exception);
   }
 
+  yield put(updateColors(colors));
+
   yield all([
-    put(updateColors(colors)),
+    put(updateColorsFinished()),
     put(colorSelected(selectedColorId)),
   ]);
 }

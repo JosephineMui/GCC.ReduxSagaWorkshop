@@ -1,9 +1,10 @@
-import { call, take, put, all } from 'redux-saga/effects';
+import { call, take, put } from 'redux-saga/effects';
 import { getGrades as getGradesApi } from '../../api';
 import {
   GET_GRADES,
   updateGrades,
   gradeSelected,
+  gradeSelectionChanged,
 } from '../../actions';
 
 function* getGrades() {
@@ -20,6 +21,7 @@ function* getGrades() {
   }
 
   yield put(gradeSelected(selectedGradeId));
+  yield put(gradeSelectionChanged());
 }
 
 export default function* gradeSaga() {

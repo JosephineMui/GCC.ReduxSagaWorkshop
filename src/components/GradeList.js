@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TileSelect from '@gcc/pip-components/dist/TileSelect';
 import { gradesSelector, selectedGradeSelector } from '../selectors';
-import { gradeSelected } from '../actions';
+import { gradeSelected, gradeSelectionChanged } from '../actions';
 
 const GradeList = ({ grades, selectedGrade, gradeSelected }) => {
 
@@ -43,7 +43,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  gradeSelected: grade => dispatch(gradeSelected(grade.id)),
+  gradeSelected: grade => {
+    dispatch(gradeSelected(grade.id));
+    dispatch(gradeSelectionChanged());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GradeList);

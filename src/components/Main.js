@@ -7,7 +7,7 @@ import HandleList from './HandleList';
 import Visualizer from './Visualizer';
 import GradeList from './GradeList';
 
-const Main = ({ productId, getProduct }) => {
+const Main = ({ productId, getProduct, name }) => {
 
   useEffect(() => {
     getProduct(productId);
@@ -28,20 +28,30 @@ const Main = ({ productId, getProduct }) => {
       <div>
         <Visualizer />
       </div>
+      <div>
+        <h3>{name}</h3>
+      </div>
     </div>
   );
 };
 
 Main.propTypes = {
   productId: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
   getProduct: PropTypes.func,
+};
+
+Main.defaultProps = {
+  name: '',
 };
 
 const mapStateToProps = (state, ownProps) => {
   const productId = ownProps.match.params.id || 100;
+  const { name } = state.product;
 
   return {
     productId,
+    name,
   };
 }
 

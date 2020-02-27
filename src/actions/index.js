@@ -21,6 +21,8 @@ export {
   colorSelected,
   UPDATE_COLOR_PRICE,
   updateColorPrice,
+  UPDATE_COLORS_FINISHED,
+  updateColorsFinished,
 }
   from "./colorActions";
 
@@ -41,5 +43,7 @@ export {
   updateGrades,
   GRADE_SELECTED,
   gradeSelected,
+  GRADE_SELECTION_CHANGED,
+  gradeSelectionChanged,
 }
   from "./gradeActions";

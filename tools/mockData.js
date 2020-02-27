@@ -2,13 +2,13 @@ const products = [
   {
     id: 100,
     name: 'Andersen 3000 Series Full View Retractable Aluminum Storm Door',
-    colorChoices: [4, 5, 6, 7, 8],
-    defaultColorId: 4,
+    colorChoices: [5, 6, 7, 8],
+    defaultColorId: 5,
   },
   {
     id: 200,
     name: 'Andersen 2000 Seriees Full View Interchangeable Aluminum Storm Door',
-    colorChoices: [1, 3, 6, 7, 8],
+    colorChoices: [2, 4, 7, 8],
     defaultColorId: 1,
   },
 ];
@@ -84,133 +84,91 @@ const handles = [
 
 const prices = [
   {
-    sku: '204281265_202985059',
+    gradeId: 'S',
+    colorId: 2,
     price: 101.99,
   },
   {
-    sku: '90726-H03-G01',
-    price: 160.95,
+    gradeId: 'S',
+    colorId: 4,
+    price: 130.95,
   },
   {
-    sku: '90734-H03-G01',
-    price: 200.00,
+    gradeId: 'S',
+    colorId: 5,
+    price: 119.50,
   },
   {
-    sku: '90766-H03-G01',
-    price: 199.95,
+    gradeId: 'S',
+    colorId: 6,
+    price: 189.95,
   },
   {
-    sku: '90758-H03-G01',
-    price: 250.00,
+    gradeId: 'S',
+    colorId: 7,
+    price: 170.00,
   },
   {
-    sku: '90742-H03-G01',
-    price: 290.99,
+    gradeId: 'S',
+    colorId: 8,
+    price: 199.99,
   },
   {
-    sku: '90774-H03-G01',
-    price: 300.00,
+    gradeId: 'P',
+    colorId: 2,
+    price: 201.99,
   },
   {
-    sku: '90750-H03-G01',
-    price: 280.88,
+    gradeId: 'P',
+    colorId: 4,
+    price: 230.95,
   },
   {
-    sku: '21484',
-    price: 151.99,
+    gradeId: 'P',
+    colorId: 5,
+    price: 249.50,
   },
   {
-    sku: '21485',
-    price: 190.95,
+    gradeId: 'P',
+    colorId: 6,
+    price: 269.95,
   },
   {
-    sku: '21486',
-    price: 230.00,
+    gradeId: 'P',
+    colorId: 7,
+    price: 260.00,
   },
   {
-    sku: '21487',
-    price: 110.99,
-  },
-  {
-    sku: '21232',
-    price: 310.00,
-  },
-  {
-    sku: '20314',
-    price: 250.95,
+    gradeId: 'P',
+    colorId: 8,
+    price: 279.99,
   },
 ];
 
 const skus = [
   {
-    gradeId: 'S',
-    colorId: 1,
-    sku: '204281265_202985059',
-  },
-  {
-    gradeId: 'S',
     colorId: 2,
-    sku: '90726-H03-G01',
+    sku: '90725-H07-G01',
   },
   {
-    gradeId: 'S',
-    colorId: 3,
-    sku: '90734-H03-G01',
-  },
-  {
-    gradeId: 'S',
     colorId: 4,
-    sku: '90766-H03-G01',
+    sku: '90765-H07-G01',
   },
   {
-    gradeId: 'S',
     colorId: 5,
-    sku: '90758-H03-G01',
+    sku: '90757-H07-G01',
   },
   {
-    gradeId: 'S',
     colorId: 6,
-    sku: '90742-H03-G01',
+    sku: '90741-H07-G01',
   },
   {
-    gradeId: 'S',
     colorId: 7,
-    sku: '90774-H03-G01',
+    sku: '90773-H07-G01',
   },
   {
-    gradeId: 'S',
     colorId: 8,
-    sku: '90750-H03-G01',
-  },
-  {
-    gradeId: 'P',
-    colorId: 1,
-    sku: '21484',
-  },
-  {
-    gradeId: 'P',
-    colorId: 2,
-    sku: '21485',
-  },
-  {
-    gradeId: 'P',
-    colorId: 3,
-    sku: '21486',
-  },
-  {
-    gradeId: 'P',
-    colorId: 6,
-    sku: '21487',
-  },
-  {
-    gradeId: 'P',
-    colorId: 7,
-    sku: '21232',
-  },
-  {
-    gradeId: 'P',
-    colorId: 8,
-    sku: '20314',
+    sku: '90749-H07-G01',
   },
 ];
 

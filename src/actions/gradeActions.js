@@ -8,3 +8,6 @@ export const updateGrades = createAction(UPDATE_GRADES, 'grades');
 
 export const GRADE_SELECTED = 'GRADE_SELECTED';
 export const gradeSelected = createAction(GRADE_SELECTED, 'gradeId');
+
+export const GRADE_SELECTION_CHANGED = 'GRADE_SELECTION_CHANGED';
+export const gradeSelectionChanged = createAction(GRADE_SELECTION_CHANGED);
