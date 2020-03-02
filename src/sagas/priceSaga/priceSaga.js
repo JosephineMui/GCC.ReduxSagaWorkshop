@@ -9,17 +9,14 @@ import {
   safeSaga,
 } from '../../actions';
 
-const formatPrice = colorPrice => (colorPrice && colorPrice.price !== 0 ? `$${colorPrice.price.toFixed(2)}` : 'N/A');
-
 function* getColorPrice(gradeId, colorId) {
   try {
-    const colorPrice = yield call(getPrice, gradeId, colorId);
+    const { price } = yield call(getPrice, gradeId, colorId);
 
-    const price = formatPrice(colorPrice);
     yield put(updateColorPrice(colorId, price))
   }
   catch (exception) {
-    yield put(updateColorPrice(colorId, 'N/A'));
+    yield put(updateColorPrice(colorId, null));
   }
 }
 

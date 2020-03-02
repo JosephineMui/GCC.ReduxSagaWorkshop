@@ -7,7 +7,7 @@ import {
 export const colorsReducer = createReducer({}, {
   [UPDATE_COLORS](state, { colors }) {
     return colors.reduce((dict, color) => {
-      dict[color.id] = { ...color, price: 'N/A' };
+      dict[color.id] = { ...color, price: null };
       return dict;
     }, {});
   },

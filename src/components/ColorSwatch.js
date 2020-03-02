@@ -5,6 +5,8 @@ import * as Styled from './ColorSwatch.styled';
 import { colorByIdSelector } from '../selectors';
 import { colorSelected } from '../actions';
 
+const formatPrice = price => (price && price !== 0 ? `$${price.toFixed(2)}` : 'N/A');
+
 const ColorSwatch = ({ id, name, imageUrl, isSelected, price, colorSelected }) => {
 
   return (
@@ -50,7 +52,7 @@ ColorSwatch.propTypes = {
 }
 
 ColorSwatch.defaultProps = {
-  price: 'N/A',
+  price: null,
   imageUrl: '',
   isSelected: false,
 }
@@ -60,7 +62,7 @@ const mapStateToProps = (state, ownProps) => {
   const { price } = colorByIdSelector(id)(state);
 
   return {
-    price,
+    price: formatPrice(price),
     id,
     name,
     imageUrl,

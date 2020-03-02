@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MainImage } from './Visualizer.styled';
+import { SCENE7_URL } from '../constants';
+import { selectedSkuSelector } from '../selectors';
 
 const Visualizer = ({ imageUrl }) => {
 
@@ -17,7 +19,8 @@ Visualizer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const imageUrl = 'https://blinds.scene7.com/is/image/Blinds/01_200_Bronze_TSS'
+  const sku = selectedSkuSelector(state);
+  const imageUrl = `${SCENE7_URL}/${sku}`;
 
   return {
     imageUrl,

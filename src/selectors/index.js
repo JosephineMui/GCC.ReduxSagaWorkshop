@@ -1,4 +1,5 @@
 export { productColorsSelector } from './productColorsSelector';
+export { totalPriceSelector } from './totalPriceSelector';
 
 // colors
 export { colorsSelector } from './colors/colorsSelector';
@@ -17,6 +18,9 @@ export { productSelector } from './product/productSelector';
 export { selectedColorSelector } from './selectedChoices/selectedColorSelector';
 export { selectedGradeSelector } from './selectedChoices/selectedGradeSelector';
 export { selectedHandleSelector } from './selectedChoices/selectedHandleSelector';
+export { selectedSkuSelector } from './selectedChoices/selectedSkuSelector';
+export { selectedQuantitySelector } from './selectedChoices/selectedQuantitySelector';
+
 
 // stores
 export { storesSelector } from './stores/storesSelector';

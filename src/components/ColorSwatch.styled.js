@@ -7,6 +7,7 @@ export const ColorSwatchLabel = styled.label`
   position: relative;
   height: 100%;
   align-content: flex-start;
+  cursor: pointer;
 
   &:before {
     content: ' ';

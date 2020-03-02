@@ -6,6 +6,8 @@ import ColorSwatchList from './ColorSwatchList';
 import HandleList from './HandleList';
 import Visualizer from './Visualizer';
 import GradeList from './GradeList';
+import Quantity from './Quantity';
+import Price from './Price';
 
 const Main = ({ productId, getProduct, name }) => {
 
@@ -28,9 +30,9 @@ const Main = ({ productId, getProduct, name }) => {
       <div>
         <Visualizer />
       </div>
-      <div>
-        <h3>{name}</h3>
-      </div>
+      <h3>{name}</h3>
+      <Price />
+      <Quantity />
     </div>
   );
 };
