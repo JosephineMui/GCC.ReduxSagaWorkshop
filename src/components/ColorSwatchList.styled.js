@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ColorListContainer = styled.div`
   position: relative;
-
   &.hide-all-swatches {
     overflow: hidden;
     height: ${props => props.swatchRowHeigh};
@@ -22,15 +21,15 @@ export const SwatchList = styled.ul`
 
   @supports (display: grid) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 11px;
+    grid-row-gap: 10px;
+    grid-column-gap: 8px;
   }
 
   @media (min-width: 768px) {
     @supports (display: grid) {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -42,7 +41,7 @@ export const SwatchList = styled.ul`
 
   @media (min-width: 1440px) {
     @supports (display: grid) {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 `;

@@ -12,6 +12,7 @@ function* getVisualizerImage({ colorId }) {
   try {
     const colorSku = yield call(getSkuByColorId, colorId);
     sku = colorSku.sku;
+    console.log('****** sku returned', sku);
   }
   catch (exception) {
     console.log('getVisualizerImage failed', exception);

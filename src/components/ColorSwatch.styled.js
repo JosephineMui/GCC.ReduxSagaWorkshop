@@ -5,8 +5,9 @@ export const ColorSwatchLabel = styled.label`
   flex-wrap: wrap;
   flex-direction: row;
   position: relative;
-  height: 100%;
   align-content: flex-start;
+  width: 150px;
+  height: 185px;
   cursor: pointer;
 
   &:before {
@@ -30,8 +31,8 @@ export const SwatchImageContainer = styled.div`
   flex: 1 100%;
   display: block;
   width: 100%;
-  max-height: 104px;
-  min-height: 104px;
+  max-height: 90px;
+  min-height: 90px;
   overflow: hidden;
 
   img {
@@ -46,7 +47,7 @@ export const SwatchContentContainer = styled.div`
   flex-direction: row;
   flex: 1 100%;
   flex-wrap: wrap;
-  padding: 4px 7px 2px;
+  padding: 0px 7px 2px;
   color: #333;
 `;
 

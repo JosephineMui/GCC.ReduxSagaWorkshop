@@ -1,8 +1,7 @@
+body {
+  font-family: helvetica-neue,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
 #app {
-  max-width: 850px;
-  margin: 0 auto;
+  margin: 30px 120px;
 }
 
-nav {
-  padding: 20px 0 20px 0;
-}

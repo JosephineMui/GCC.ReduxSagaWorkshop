@@ -8,6 +8,23 @@ import Visualizer from './Visualizer';
 import GradeList from './GradeList';
 import Quantity from './Quantity';
 import Price from './Price';
+import styled from 'styled-components';
+
+const MainContainer = styled.div`
+  display: flex;
+`;
+
+const LeftContainer = styled.div`
+  padding: 20px;
+  width: 760px;
+`;
+
+
+const RightContainer = styled.div`
+  padding: 0px;
+  margin-left: 40px;
+  width: 500px;
+`;
 
 const Main = ({ productId, getProduct, name }) => {
 
@@ -17,22 +34,24 @@ const Main = ({ productId, getProduct, name }) => {
 
   return (
     <div>
-      <h1>Customize Your Storm Doors</h1>
-      <div>
-        <GradeList />
-      </div>
-      <div>
-        <ColorSwatchList />
-      </div>
-      <div>
-        <HandleList />
-      </div>
-      <div>
-        <Visualizer />
-      </div>
-      <h3>{name}</h3>
-      <Price />
-      <Quantity />
+      <h1>Customize Your Storm Door</h1>
+      <MainContainer>
+        <LeftContainer>
+          <GradeList />
+          <div>
+            <ColorSwatchList />
+          </div>
+          <div>
+            <HandleList />
+          </div>
+        </LeftContainer>
+        <RightContainer>
+          <Visualizer />
+          <h3>{name}</h3>
+          <Price />
+          <Quantity />
+        </RightContainer>
+      </MainContainer>
     </div>
   );
 };

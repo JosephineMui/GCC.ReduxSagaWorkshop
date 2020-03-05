@@ -20,6 +20,8 @@ const render = (store) => {
   );
 }
 
+// Change to one action such as initialLoad and
+// not having two dispatch
 store.dispatch(getGrades());
 store.dispatch(getHandles());
 

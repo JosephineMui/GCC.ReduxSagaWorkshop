@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const MainImage = styled.div`
-  margin: 0 auto 10px;
   text-align: center;
   cursor: pointer;
+  height: 400px;
 
   img {
     margin: 0 auto;
