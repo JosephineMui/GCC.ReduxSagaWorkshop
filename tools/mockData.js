@@ -172,6 +172,8 @@ const skus = [
   },
 ];
 
+const rules = { valid: true };
+
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
@@ -181,4 +183,5 @@ module.exports = {
   prices,
   skus,
   grades,
+  rules,
 };

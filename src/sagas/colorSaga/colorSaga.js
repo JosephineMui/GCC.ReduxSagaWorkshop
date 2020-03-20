@@ -7,6 +7,8 @@ import {
   updateColors,
   colorSelected,
   updateColorsFinished,
+  colorApiStart,
+  colorApiEnd,
 } from '../../actions';
 
 function* getColors() {
@@ -15,6 +17,7 @@ function* getColors() {
   let selectedColorId = null;
 
   try {
+    yield put(colorApiStart());
     colors = yield call(getColorsApi, colorChoices);
     selectedColorId = defaultColorId;
   }
@@ -22,6 +25,7 @@ function* getColors() {
     console.log('getColors failed', exception);
   }
 
+  yield put(colorApiEnd());
   yield put(updateColors(colors));
 
   yield all([

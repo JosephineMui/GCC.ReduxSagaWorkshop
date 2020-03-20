@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChoiceBoxSelect from '@gcc/pip-components/dist/ChoiceBoxSelect';
-import { handlesSelector, selectedHandleSelector } from '../selectors';
+import {
+  handlesSelector,
+  selectedChoicesSelector,
+  ajaxStatusSelector,
+} from '../selectors';
 import { handleSelected } from '../actions';
+import LoadSpinner from './LoadSpinner';
 
-const HandleList = ({ handles, selectedHandle, handleSelected }) => {
+const HandleList = ({ handles, selectedHandle, handleSelected, handleLoading }) => {
 
   return (
     <React.Fragment>
       <h3>Select Handle</h3>
-      <ChoiceBoxSelect
+      {handleLoading && <LoadSpinner />}
+      {!handleLoading && <ChoiceBoxSelect
         value={selectedHandle}
         options={handles}
         keyBy={handle => handle.id}
@@ -18,6 +24,7 @@ const HandleList = ({ handles, selectedHandle, handleSelected }) => {
         imageBy={handle => handle.imageUrl}
         onChange={handleSelected}
       />
+      }
     </React.Fragment>
   );
 };
@@ -26,6 +33,7 @@ HandleList.propTypes = {
   handles: PropTypes.array.isRequired,
   selectedHandle: PropTypes.object,
   handleSelected: PropTypes.func.isRequired,
+  handleLoading: PropTypes.bool.isRequired,
 }
 
 HandleList.defaultProps = {
@@ -34,12 +42,14 @@ HandleList.defaultProps = {
 
 const mapStateToProps = state => {
   const handles = handlesSelector(state);
-  const selectedHandleId = selectedHandleSelector(state);
-  const selectedHandle = handles[selectedHandleId] || null;
+  const { handleId } = selectedChoicesSelector(state);
+  const selectedHandle = handles[handleId] || null;
+  const { handleLoading } = ajaxStatusSelector(state);
 
   return {
     handles: Object.values(handles) || [],
     selectedHandle,
+    handleLoading,
   };
 };
 

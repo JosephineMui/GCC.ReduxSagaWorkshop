@@ -4,6 +4,7 @@ export const MainImage = styled.div`
   text-align: center;
   cursor: pointer;
   height: 400px;
+  width: 500px;
 
   img {
     margin: 0 auto;

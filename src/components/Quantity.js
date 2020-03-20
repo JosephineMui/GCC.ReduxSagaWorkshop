@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Quantity from '@gcc/pip-components/dist/templates/Quantity';
 import { updateQuantity } from '../actions';
-import { selectedQuantitySelector } from '../selectors';
+import { selectedChoicesSelector } from '../selectors';
 
 const mapStateToProp = (state) => {
-  const quantityRequested = selectedQuantitySelector(state);
+  const { quantity } = selectedChoicesSelector(state);
 
   return {
-    quantityRequested,
+    quantityRequested: quantity,
     quantityAvailable: 999,
   };
 };

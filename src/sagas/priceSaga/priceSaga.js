@@ -1,7 +1,7 @@
 import { call, takeLatest, select, all, spawn, put } from 'redux-saga/effects';
 import isEmpty from 'lodash/isEmpty';
 import { getPrice } from '../../api';
-import { colorsSelector, selectedGradeSelector } from '../../selectors';
+import { colorsSelector, selectedChoicesSelector } from '../../selectors';
 import {
   GRADE_SELECTION_CHANGED,
   UPDATE_COLORS_FINISHED,
@@ -22,11 +22,11 @@ function* getColorPrice(gradeId, colorId) {
 
 function* getColorPrices() {
 
-  const selectedGradeId = yield select(selectedGradeSelector);
+  const { gradeId } = yield select(selectedChoicesSelector);
   const colors = yield select(colorsSelector);
 
-  if (selectedGradeId && !isEmpty(colors))
-    yield all(Object.keys(colors).map(colorId => spawn(getColorPrice, selectedGradeId, colorId)));
+  if (gradeId && !isEmpty(colors))
+    yield all(Object.keys(colors).map(colorId => spawn(getColorPrice, gradeId, colorId)));
 }
 
 export default function* priceSaga() {

@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ColorSwatch from './ColorSwatch';
-import { productColorsSelector, selectedColorSelector } from '../selectors';
+import {
+  productColorsSelector,
+  selectedChoicesSelector,
+  ajaxStatusSelector,
+} from '../selectors';
 import * as Styled from './ColorSwatchList.styled';
+import LoadSpinner from './LoadSpinner';
 
-const ColorSwatchList = ({ colors, selectedColorId }) => {
+const ColorSwatchList = ({ colors, selectedColorId, colorLoading }) => {
 
   return (
     <Styled.ColorListContainer
@@ -13,7 +18,8 @@ const ColorSwatchList = ({ colors, selectedColorId }) => {
       swatchRowHeigh={'200px'}
     >
       <h3>Select Color</h3>
-      <Styled.SwatchList>
+      {colorLoading && <LoadSpinner />}
+      {!colorLoading && <Styled.SwatchList>
         {colors.map(color => (
           <Styled.SwatchListItem key={color.id}>
             <ColorSwatch
@@ -23,13 +29,15 @@ const ColorSwatchList = ({ colors, selectedColorId }) => {
           </Styled.SwatchListItem>
         ))}
       </Styled.SwatchList>
+      }
     </Styled.ColorListContainer>
   );
 }
 
 ColorSwatchList.propTypes = {
   colors: PropTypes.array.isRequired,
-  selectedColorId: PropTypes.number.isRequired,
+  selectedColorId: PropTypes.number,
+  colorLoading: PropTypes.bool.isRequired,
 }
 
 ColorSwatchList.defaultProps = {
@@ -39,11 +47,13 @@ ColorSwatchList.defaultProps = {
 
 const mapStateToProps = (state) => {
   const colors = productColorsSelector(state);
-  const selectedColorId = selectedColorSelector(state);
+  const { colorId } = selectedChoicesSelector(state);
+  const { colorLoading } = ajaxStatusSelector(state);
 
   return {
     colors,
-    selectedColorId,
+    selectedColorId: colorId,
+    colorLoading,
   };
 }
 
