@@ -7,7 +7,9 @@ export const totalPriceSelector = createSelector(
     const { colorId, quantity } = selectedChoices;
     if (colorId && quantity) {
       const selectedColor = colors[colorId];
-      return selectedColor.price * quantity;
+      if (selectedColor) {
+        return selectedColor.price * quantity;
+      }
     }
     return 0;
   }

@@ -9,7 +9,7 @@ const products = [
     id: 200,
     name: 'Andersen 2000 Seriees Full View Interchangeable Aluminum Storm Door',
     colorChoices: [2, 4, 7, 8],
-    defaultColorId: 1,
+    defaultColorId: 2,
   },
 ];
 
