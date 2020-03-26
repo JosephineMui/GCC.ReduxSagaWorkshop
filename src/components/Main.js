@@ -10,8 +10,9 @@ import Quantity from './Quantity';
 import Modal from './Modal';
 import AddToCartButton from './AddToCartButton';
 import Price from './Price';
-import { addToCartStatusSelector } from '../selectors';
+import { addToCartStatusSelector, ajaxStatusSelector } from '../selectors';
 import { MainContainer, LeftContainer, RightContainer } from './Main.styled';
+import LoadSpinner from './LoadSpinner';
 
 const Main = ({
   productId,
@@ -20,6 +21,7 @@ const Main = ({
   addToCartButtonClicked,
   clearAddToCart,
   addToCartStatus,
+  productLoading,
 }) => {
 
   useEffect(() => {
@@ -38,7 +40,8 @@ const Main = ({
         </LeftContainer>
         <RightContainer>
           <Visualizer />
-          <h3>{name}</h3>
+          {productLoading && <LoadSpinner />}
+          {!productLoading && <h3>{name}</h3>}
           <Price />
           <Quantity />
           <AddToCartButton clickHandler={addToCartButtonClicked} />
@@ -55,6 +58,7 @@ Main.propTypes = {
   addToCartButtonClicked: PropTypes.func,
   clearAddToCart: PropTypes.func,
   addToCartStatus: PropTypes.object.isRequired,
+  productLoading: PropTypes.bool.isRequired,
 };
 
 Main.defaultProps = {
@@ -65,11 +69,13 @@ const mapStateToProps = (state, ownProps) => {
   const productId = ownProps.match.params.id || 100;
   const { name } = state.product;
   const addToCartStatus = addToCartStatusSelector(state);
+  const { productLoading } = ajaxStatusSelector(state);
 
   return {
     productId,
     name,
     addToCartStatus,
+    productLoading,
   };
 }
 

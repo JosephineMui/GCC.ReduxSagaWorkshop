@@ -24,7 +24,6 @@ function* getColors() {
   catch (exception) {
     console.log('getColors failed', exception);
   }
-
   yield put(colorApiEnd());
   yield put(updateColors(colors));
 

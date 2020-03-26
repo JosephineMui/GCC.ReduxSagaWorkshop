@@ -37,12 +37,13 @@ export const CloseButton = styled.span`
 export const Message = styled.div`
   font-size: 20px;
   padding: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
 `;
 
 export const ConfirmationNum = styled.div`
   font-size: 20px;
   color: blue;
+  font-weight: bold;
   text-align: center;
 `;

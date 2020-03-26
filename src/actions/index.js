@@ -99,5 +99,9 @@ export {
   incrementImageCall,
   DECREMENT_IMAGE_CALL,
   decrementImageCall,
+  PRODUCT_API_START,
+  productApiStart,
+  PRODUCT_API_END,
+  productApiEnd,
 }
   from './ajaxActions';
