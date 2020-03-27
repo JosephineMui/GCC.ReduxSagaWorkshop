@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProduct, addToCart, clearAddToCart } from '../actions';
+import {
+  // getProduct,
+  addToCart,
+  clearAddToCart,
+} from '../actions';
+import { getColors } from '../actions/colorActionsThunk';
+import { getProduct } from '../actions/productActionsThunk';
 import ColorSwatchList from './ColorSwatchList';
 import HandleList from './HandleList';
 import Visualizer from './Visualizer';
@@ -79,8 +85,20 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
+// const mapDispatchToProps = dispatch => ({
+//   getProduct: async (productId) => {
+//     await dispatch(getProduct(productId));
+//     await dispatch(getColors());
+//   },
+//   addToCartButtonClicked: () => dispatch(addToCart()),
+//   clearAddToCart: () => dispatch(clearAddToCart()),
+// })
+
 const mapDispatchToProps = dispatch => ({
-  getProduct: productId => dispatch(getProduct(productId)),
+  getProduct: productId => {
+    dispatch(getProduct(productId))
+      .then(() => dispatch(getColors()));
+  },
   addToCartButtonClicked: () => dispatch(addToCart()),
   clearAddToCart: () => dispatch(clearAddToCart()),
 })

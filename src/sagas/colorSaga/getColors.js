@@ -1,4 +1,4 @@
-import { call, put, select, all } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 import { getColors as getColorsApi } from '../../api';
 import { productSelector } from '../../selectors';
 import {
@@ -17,14 +17,10 @@ function* getColors() {
 
     yield put(colorApiStart());
     const colors = yield call(getColorsApi, colorChoices);
-    const selectedColorId = defaultColorId;
 
     yield put(updateColors(colors));
-
-    yield all([
-      put(updateColorsFinished()),
-      put(colorSelected(selectedColorId)),
-    ]);
+    yield put(updateColorsFinished());
+    yield put(colorSelected(defaultColorId));
   }
   catch (exception) {
     console.log('getColors failed', exception);
