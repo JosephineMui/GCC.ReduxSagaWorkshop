@@ -86,6 +86,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 // const mapDispatchToProps = dispatch => ({
+//   getProduct: productId => dispatch(getProduct(productId)),
+// })
+
+// const mapDispatchToProps = dispatch => ({
 //   getProduct: async (productId) => {
 //     await dispatch(getProduct(productId));
 //     await dispatch(getColors());

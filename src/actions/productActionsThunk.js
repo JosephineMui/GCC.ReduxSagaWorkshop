@@ -15,6 +15,3 @@ export const getProduct = productId => (dispatch) => {
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const updateProduct = createAction(UPDATE_PRODUCT, 'product');
 
-// export const GET_PRODUCT_FINISHED = 'GET_PRODUCT_FINISHED';
-// export const getProductFinished = createAction(GET_PRODUCT_FINISHED);
-
