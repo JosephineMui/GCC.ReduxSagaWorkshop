@@ -13,21 +13,23 @@ import {
 } from '../../actions';
 
 function* getGrades() {
-  let selectedGradeId = null;
-
   try {
     yield put(gradeApiStart());
-    const data = yield call(getGradesApi);
+    const grades = yield call(getGradesApi);
 
-    if (data.length > 0) selectedGradeId = data[0].id;
-    yield put(updateGrades(data));
+    yield put(updateGrades(grades));
+
+    if (grades.length > 0) {
+      const selectedGradeId = grades[0].id;
+      yield put(gradeSelected(selectedGradeId));
+      yield put(gradeSelectionChanged());
+    }
   }
   catch (exception) {
     console.log('getStores failed', exception);
   }
+
   yield put(gradeApiEnd());
-  yield put(gradeSelected(selectedGradeId));
-  yield put(gradeSelectionChanged());
 }
 
 export default function* gradeSaga() {

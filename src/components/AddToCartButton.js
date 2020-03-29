@@ -17,6 +17,7 @@ const CartButtonStyled = styled(CartButton)`
   margin: 25px 5px;
   padding: 10px 100px;
   font-size: 20px;
+  cursor: pointer;
 
   &:disabled {
     box-shadow: 0 3px 0 #999;

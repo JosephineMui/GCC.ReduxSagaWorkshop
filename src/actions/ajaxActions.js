@@ -25,3 +25,8 @@ export const incrementImageCall = createAction(INCREMENT_IMAGE_CALL);
 export const DECREMENT_IMAGE_CALL = 'DECREMENT_IMAGE_CALL';
 export const decrementImageCall = createAction(DECREMENT_IMAGE_CALL);
 
+export const SKU_API_START = 'SKU_API_START';
+export const skuApiStart = createAction(SKU_API_START);
+export const SKU_API_END = 'SKU_API_END';
+export const skuApiEnd = createAction(SKU_API_END);
+

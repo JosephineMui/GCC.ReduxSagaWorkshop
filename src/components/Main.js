@@ -37,7 +37,7 @@ const Main = ({
   return (
     <div>
       <h1>Customize Your Storm Door</h1>
-      <Modal onCancel={clearAddToCart} {...addToCartStatus} />
+      {addToCartStatus.displayStatus && <Modal onCancel={clearAddToCart} {...addToCartStatus} />}
       <MainContainer>
         <LeftContainer>
           <GradeList />

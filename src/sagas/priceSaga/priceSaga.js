@@ -31,6 +31,6 @@ function* getColorPrices() {
 
 export default function* priceSaga() {
   console.log("priceSaga starterd");
-  // TODO: Josephine what if I passed data through action
+
   yield takeLatest([GRADE_SELECTION_CHANGED, UPDATE_COLORS_FINISHED], safeSaga(getColorPrices));
 }

@@ -10,6 +10,8 @@ import {
   DECREMENT_IMAGE_CALL,
   PRODUCT_API_START,
   PRODUCT_API_END,
+  SKU_API_START,
+  SKU_API_END,
 } from '../actions';
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   colorLoading: false,
   handleLoading: false,
   productLoading: false,
+  imageLoading: false,
   imageCalls: 0,
 }
 
@@ -44,6 +47,12 @@ export const ajaxStatusReducer = createReducer(initialState, {
   },
   [PRODUCT_API_END](state) {
     return { ...state, productLoading: false };
+  },
+  [SKU_API_START](state) {
+    return { ...state, imageLoading: true };
+  },
+  [SKU_API_END](state) {
+    return { ...state, imageLoading: false };
   },
   [INCREMENT_IMAGE_CALL](state) {
     return { ...state, imageCalls: state.imageCalls + 1 };
